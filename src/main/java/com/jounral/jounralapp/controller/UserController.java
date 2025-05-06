@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-   private UserService service;
+    private UserService service;
 
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
@@ -35,12 +35,12 @@ public class UserController {
 //        }
 //        return new ResponseEntity<>(service.deleteUser(new ObjectId(id)), HttpStatus.OK);
 //    }
-//
+
 
     @PutMapping("/{userName}")
-    public ResponseEntity<?> updateUser(@RequestBody User user , @PathVariable String userName) {
+    public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable String userName) {
         User userInDb = service.findByUserName(userName);
-        if(userInDb != null){
+        if (userInDb != null) {
             userInDb.setUserName(user.getUserName());
             userInDb.setPassword(user.getPassword());
             service.saveUser(userInDb);
